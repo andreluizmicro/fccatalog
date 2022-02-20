@@ -1,6 +1,6 @@
 #### API FFCatalog  
 
-Está é uma API REST criada para estudo, utilizando a linguagem java. Este curso é baseado nas aulas do curso da FullCycle.
+Está é uma API REST criada usando o SpringBoot utilizando a linguagem java. Este curso é baseado nas aulas do curso da FullCycle e este projeto foi desenvolvido para meu desenvolvimento pessoal na linguagem java.
 
 Este projeto foi desenvolvido, utilzando o Docker para tornar o desenvolvimento eficiente e previsível e o DDD(Domain Driven Desgin) que é um conjunto de princípios para projeto de software.
 
