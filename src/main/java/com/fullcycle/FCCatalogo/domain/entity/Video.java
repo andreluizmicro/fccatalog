@@ -87,7 +87,11 @@ public class Video extends BaseEntity {
     }
 
     public void setYearLaunched(Integer yearLaunched) {
+        if (yearLaunched == null)
+            throw new IllegalArgumentException("yearLaunched is marked non-null but is null");
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        if (yearLaunched >= 0 || yearLaunched <= 1700)
+            throw new IllegalArgumentException("yearLaunched must be greater than 1700");
         if (yearLaunched > currentYear)
             throw new IllegalArgumentException("yearLaunched is greater than current year");
         this.yearLaunched = yearLaunched;
