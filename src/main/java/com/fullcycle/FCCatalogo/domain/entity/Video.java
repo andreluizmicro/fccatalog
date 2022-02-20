@@ -17,6 +17,7 @@ public class Video extends BaseEntity {
     private List<Category> categories = new ArrayList<Category>();
     private List<Genre> genres = new ArrayList<Genre>();
     private List<CastMember> castMembers = new ArrayList<CastMember>();
+    private List<VideoFile> videoFiles = new ArrayList<VideoFile>();
 
     public Video() {
     }
@@ -54,6 +55,15 @@ public class Video extends BaseEntity {
         this.setDescription(description);
         this.setYearLaunched(yearLaunched);
         this.setDuration(duration);
+    }
+
+    public Video(String title, String description, Integer yearLaunched, Float duration, List<VideoFile> videoFiles) {
+        super.generateUUID();
+        this.setTitle(title);
+        this.setDescription(description);
+        this.setYearLaunched(yearLaunched);
+        this.setDuration(duration);
+        this.setVideoFiles(videoFiles);
     }
 
     public void setTitle(String title) {
@@ -142,6 +152,16 @@ public class Video extends BaseEntity {
         this.castMembers = castMembers;
     }
 
+    public void setVideoFiles(List<VideoFile> files) {
+        if (files == null)
+            throw new IllegalArgumentException("files is marked non-null but is null");
+        this.videoFiles = files;
+    }
+
+    public List<VideoFile> getVideoFiles() {
+        return this.videoFiles;
+    }
+
     public void addCategory(Category category) {
         if (category == null)
             throw new IllegalArgumentException("categoriy is marked non-null but is null");
@@ -177,4 +197,30 @@ public class Video extends BaseEntity {
             throw new IllegalArgumentException("member is marked non-null but is null");
         this.castMembers.removeIf(c -> this.castMembers.contains(member));
     }
+
+    public Video createVideoWithFiles(String title, String description, Integer yearLaunched, Float duration,
+            List<Category> categories, List<Genre> genres, List<CastMember> castMembers, List<VideoFile> videoFiles) {
+        this.setTitle(title);
+        this.setDescription(description);
+        this.setYearLaunched(yearLaunched);
+        this.setDuration(duration);
+        this.setCategories(categories);
+        this.setGenres(genres);
+        this.setCastMembers(castMembers);
+        this.setVideoFiles(videoFiles);
+        return this;
+    }
+
+    public Video createWithoutFile(String title, String description, Integer yearLaunched, Float duration,
+            List<Category> categories, List<Genre> genres, List<CastMember> castMembers) {
+        this.setTitle(title);
+        this.setDescription(description);
+        this.setYearLaunched(yearLaunched);
+        this.setDuration(duration);
+        this.setCategories(categories);
+        this.setGenres(genres);
+        this.setCastMembers(castMembers);
+        return this;
+    }
+
 }
