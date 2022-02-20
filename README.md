@@ -26,3 +26,30 @@ Para executar o projeto basta apenas executar o comando:
 Ao executar o comando o projeto pode ser acessado em:
 
 http://localhost:8080/
+
+Acessando o terminal do container
+OBS: para acessar o container é necessário o id do container, para isso podemos executar o comando docker ps
+
+```
+    docker exec -i -t container_id /bin/bash
+```
+
+### Rodando tests dentro do container
+Ao acessar o container podemos executar os tests da aplicação usando o gradlew com os seguintes comandos:
+
+```
+./gradlew test
+```
+
+```
+./gradlew clean test --info
+```
+
+Rodando um teste Específico
+
+```
+gradle -Dtest.single=CategoryTests test
+```
+
+### Visualização dos teste
+Dentro da pasta build podemos acessar abrir o arquivo index.html dentro do navegador para visualizar os testes.

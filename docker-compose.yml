@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  demo:
+  fc_catalogo:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -8,6 +8,6 @@ services:
       - ./:/app
     working_dir: /app
     command: sh run.sh
-    ports: 
-    - 8080:8080
-    - 8005:8005
+    ports:
+      - 8080:8080
+      - 8005:8005
