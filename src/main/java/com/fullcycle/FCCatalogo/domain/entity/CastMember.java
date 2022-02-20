@@ -26,7 +26,7 @@ enum CastMemberType {
     }
 
     public static Boolean valueOf(CastMemberType type) {
-        CastMemberType castMemberType = (CastMemberType) values.get(type);
+        CastMemberType castMemberType = (CastMemberType) values.get(type.type);
         if (castMemberType == null)
             return false;
         return true;
@@ -40,6 +40,11 @@ public class CastMember extends BaseEntity {
     private CastMemberType type;
 
     public CastMember() {
+    }
+
+    public CastMember(String name) {
+        super.generateUUID();
+        this.setName(name);
     }
 
     public CastMember(UUID id, String name, CastMemberType type) {
@@ -61,7 +66,7 @@ public class CastMember extends BaseEntity {
     public void setName(String name) {
         if (name == null)
             throw new IllegalArgumentException("name is marked non-null but is null");
-        if (name.length() > 0)
+        if (name.length() == 0)
             throw new IllegalArgumentException("name is marked non-blank but is blank");
         this.name = name;
     }
