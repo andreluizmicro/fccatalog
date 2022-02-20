@@ -58,23 +58,23 @@ public class CastMember extends BaseEntity {
         return name;
     }
 
+    public void setName(String name) {
+        if (name == null)
+            throw new IllegalArgumentException("name is marked non-null but is null");
+        if (name.length() > 0)
+            throw new IllegalArgumentException("name is marked non-blank but is blank");
+        this.name = name;
+    }
+
     public CastMemberType getType() {
         return type;
     }
 
     public void setType(CastMemberType type) {
         if (type == null)
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("type is marked non-null but is null");
         if (!CastMemberType.valueOf(type))
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("type is marked as valid but is not valid enum");
         this.type = type;
-    }
-
-    public void setName(String name) {
-        if (name == null)
-            throw new IllegalArgumentException("");
-        if (name.length() > 0)
-            throw new IllegalArgumentException("");
-        this.name = name;
     }
 }
